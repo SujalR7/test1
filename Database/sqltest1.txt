@@ -1,0 +1,71 @@
+1)
+mysql> select m.employee_id as 'manager_id',m.first_name as 'manager',e.employee_id as 'employee_id',e.first_name as 'employee_name' from employees e inner join employees m on e.manager_id=m.employee_id limit 10;
++------------+-----------+-------------+---------------+
+| manager_id | manager   | employee_id | employee_name |
++------------+-----------+-------------+---------------+
+|        100 | Steven    |         101 | Neena         |
+|        100 | Steven    |         102 | Lex           |
+|        102 | Lex       |         103 | Alexander     |
+|        103 | Alexander |         104 | Bruce         |
+|        103 | Alexander |         105 | David         |
+|        103 | Alexander |         106 | Valli         |
+|        103 | Alexander |         107 | Diana         |
+|        101 | Neena     |         108 | Nancy         |
+|        108 | Nancy     |         109 | Daniel        |
+|        108 | Nancy     |         110 | John          |
++------------+-----------+-------------+---------------+
+
+
+2)
+mysql> select e.first_name as "employee_name",m.first_name as "manager_name",e.city as "city" from emp_details_view e inner join emp_details_view m on e.manager_id=m.employee_id and e.city=m.city limit 11;
++---------------+--------------+---------------------+
+| employee_name | manager_name | city                |
++---------------+--------------+---------------------+
+| Bruce         | Alexander    | Southlake           |
+| David         | Alexander    | Southlake           |
+| Valli         | Alexander    | Southlake           |
+| Diana         | Alexander    | Southlake           |
+| Julia         | Matthew      | South San Francisco |
+| Irene         | Matthew      | South San Francisco |
+| James         | Matthew      | South San Francisco |
+| Steven        | Matthew      | South San Francisco |
+| Laura         | Adam         | South San Francisco |
+| Mozhe         | Adam         | South San Francisco |
+| James         | Adam         | South San Francisco |
++---------------+--------------+---------------------+
+
+3)
+mysql> select m.employee_id as 'manager_id',m.first_name as 'manager' from emp_details_view e inner join emp_details_view m on e.manager_id=m.employee_id li
+mit 10;
++------------+-----------+
+| manager_id | manager   |
++------------+-----------+
+|        102 | Lex       |
+|        103 | Alexander |
+|        103 | Alexander |
+|        103 | Alexander |
+|        103 | Alexander |
+|        100 | Steven    |
+|        100 | Steven    |
+|        100 | Steven    |
+|        100 | Steven    |
+|        100 | Steven    |
+
+
+4)
+mysql> select e.first_name as "employee_name",e.city as "city" from emp_details_view e inner join emp_details_view m on e.manager_id=m.employee_id and e.cit
+y=m.city limit 11;
++---------------+---------------------+
+| employee_name | city                |
++---------------+---------------------+
+| Bruce         | Southlake           |
+| David         | Southlake           |
+| Valli         | Southlake           |
+| Diana         | Southlake           |
+| Julia         | South San Francisco |
+| Irene         | South San Francisco |
+| James         | South San Francisco |
+| Steven        | South San Francisco |
+| Laura         | South San Francisco |
+| Mozhe         | South San Francisco |
+| James         | South San Francisco |
